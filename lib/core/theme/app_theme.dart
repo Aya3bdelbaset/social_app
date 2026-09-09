@@ -1,0 +1,104 @@
+import 'package:flutter/material.dart';
+import 'package:social_app/core/constants/app_sizes.dart';
+import 'app_colors.dart';
+import 'app_text_styles.dart';
+abstract final class AppTheme {
+  static ThemeData light = ThemeData(
+    useMaterial3: true,
+    fontFamily: AppTextStyles.fontFamily,
+    scaffoldBackgroundColor: AppColors.background,
+
+    colorScheme: ColorScheme.fromSeed(
+      seedColor: AppColors.primary,
+      primary: AppColors.primary,
+      surface: AppColors.surface,
+      error: AppColors.error,
+      brightness: Brightness.light,
+    ),
+
+    appBarTheme: const AppBarTheme(
+      backgroundColor: AppColors.background,
+      foregroundColor: AppColors.textPrimary,
+      elevation: 0,
+      centerTitle: false,
+      surfaceTintColor: Colors.transparent,
+    ),
+
+    inputDecorationTheme: InputDecorationTheme(
+      filled: true,
+      fillColor: AppColors.inputBackground,
+
+      contentPadding: const EdgeInsets.symmetric(
+        horizontal: AppSizes.lg,
+        vertical: AppSizes.lg,
+      ),
+
+      hintStyle: AppTextStyles.body.copyWith(
+        color: AppColors.textHint,
+      ),
+
+      labelStyle: AppTextStyles.label,
+
+      border: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(AppSizes.radiusMd),
+        borderSide: const BorderSide(
+          color: AppColors.border,
+        ),
+      ),
+
+      enabledBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(AppSizes.radiusMd),
+        borderSide: const BorderSide(
+          color: AppColors.border,
+        ),
+      ),
+
+      focusedBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(AppSizes.radiusMd),
+        borderSide: const BorderSide(
+          color: AppColors.borderFocused,
+          width: 1.5,
+        ),
+      ),
+
+      errorBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(AppSizes.radiusMd),
+        borderSide: const BorderSide(
+          color: AppColors.error,
+        ),
+      ),
+
+      focusedErrorBorder: OutlineInputBorder(
+        borderRadius: BorderRadius.circular(AppSizes.radiusMd),
+        borderSide: const BorderSide(
+          color: AppColors.error,
+          width: 1.5,
+        ),
+      ),
+    ),
+
+    elevatedButtonTheme: ElevatedButtonThemeData(
+      style: ElevatedButton.styleFrom(
+        minimumSize: const Size.fromHeight(AppSizes.buttonHeight),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(AppSizes.radiusMd),
+        ),
+        elevation: 0,
+        textStyle: AppTextStyles.button,
+      ),
+    ),
+
+    dividerTheme: const DividerThemeData(
+      color: AppColors.border,
+      thickness: 1,
+    ),
+
+    bottomNavigationBarTheme: const BottomNavigationBarThemeData(
+      backgroundColor: AppColors.white,
+      selectedItemColor: AppColors.primary,
+      unselectedItemColor: AppColors.textSecondary,
+      elevation: 8,
+      type: BottomNavigationBarType.fixed,
+    ),
+  );
+}
