@@ -60,7 +60,7 @@ class UserAvatar extends StatelessWidget {
         width: size,
         height: size,
         fit: BoxFit.cover,
-        errorBuilder: (_, __, ___) {
+        errorBuilder: (_, _, _) {
           return _placeholder();
         },
       );
@@ -72,7 +72,7 @@ class UserAvatar extends StatelessWidget {
         width: size,
         height: size,
         fit: BoxFit.cover,
-        errorBuilder: (_, __, ___) {
+        errorBuilder: (_, _, _) {
           return _placeholder();
         },
       );
@@ -87,7 +87,7 @@ class UserAvatar extends StatelessWidget {
       width: size,
       height: size,
       fit: BoxFit.cover,
-      errorBuilder: (_, __, ___) {
+      errorBuilder: (_, _, _) {
         return Container(
           color: AppColors.inputBackground,
           child: Icon(
