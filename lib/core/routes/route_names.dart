@@ -8,11 +8,11 @@ abstract final class RouteNames {
   static const String setNewPassword = '/set-new-password';
   static const String selectcategory = '/select-category';
   
-
   static const String home = '/home';
   static const String discover = '/discover';
   static const String challenge = '/challenge';
   static const String activity = '/activity';
   static const String profile = '/profile';
   static const String messages = '/messages';
+  static const String mainLayout = '/main-layout';
 }
