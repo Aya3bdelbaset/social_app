@@ -4,7 +4,12 @@ import 'package:social_app/core/theme/app_colors.dart';
 import 'package:social_app/core/theme/app_text_styles.dart';
 
 class SearchBarHome extends StatelessWidget {
-  const SearchBarHome({super.key});
+  final VoidCallback? onTap;
+
+  const SearchBarHome({
+    super.key,
+    this.onTap,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -13,24 +18,29 @@ class SearchBarHome extends StatelessWidget {
       child: Row(
         children: [
           Expanded(
-            child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: AppSizes.md),
-              height: 48,
-              decoration: BoxDecoration(
-                color: AppColors.inputBackground,
-                borderRadius: BorderRadius.circular(AppSizes.radiusLg),
-              ),
-              child: Row(
-                children: [
-                  const Icon(Icons.search, color: AppColors.primary),
-                  const SizedBox(width: AppSizes.sm),
-                  Text(
-                    'Search',
-                    style: AppTextStyles.bodyMedium.copyWith(
-                      color: AppColors.textSecondary,
-                    ),
+            child: GestureDetector(
+              onTap: onTap,
+              child: AbsorbPointer(
+                child: Container(
+                  padding: const EdgeInsets.symmetric(horizontal: AppSizes.md),
+                  height: 48,
+                  decoration: BoxDecoration(
+                    color: AppColors.inputBackground,
+                    borderRadius: BorderRadius.circular(AppSizes.radiusLg),
                   ),
-                ],
+                  child: Row(
+                    children: [
+                      const Icon(Icons.search, color: AppColors.primary),
+                      const SizedBox(width: AppSizes.sm),
+                      Text(
+                        'Search',
+                        style: AppTextStyles.bodyMedium.copyWith(
+                          color: AppColors.textSecondary,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
               ),
             ),
           ),

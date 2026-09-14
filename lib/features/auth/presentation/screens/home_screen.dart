@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:social_app/core/constants/app_sizes.dart';
 import 'package:social_app/core/theme/app_colors.dart';
+import 'package:social_app/features/auth/presentation/screens/search_screen.dart';
 import 'package:social_app/features/auth/presentation/widgets/post_card_home.dart';
 import 'package:social_app/features/auth/presentation/widgets/search_bar_home.dart';
 import 'package:social_app/features/auth/presentation/widgets/tab_bar_home.dart'; // Import
@@ -45,7 +46,16 @@ class HomeScreen extends StatelessWidget {
               const SizedBox(height: AppSizes.avatarSmall),
 
               // 1. Search Bar
-              const SearchBarHome(),
+              SearchBarHome(
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const SearchScreen(),
+                    ),
+                  );
+                },
+              ),
 
               const SizedBox(height: AppSizes.lg),
 
