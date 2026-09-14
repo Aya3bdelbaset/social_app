@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:social_app/features/auth/presentation/screens/forget_password.dart';
+import 'package:social_app/features/auth/presentation/screens/main_layout_screen.dart'; // <--- Import
 import 'package:social_app/features/auth/presentation/screens/select_category.dart';
 import 'package:social_app/features/auth/presentation/screens/set_new_password.dart';
 import 'package:social_app/features/auth/presentation/screens/sign_in.dart';
@@ -30,12 +31,13 @@ abstract final class AppRoutes {
           builder: (_) => const SignInScreen(),
           settings: settings,
         );
+        
       case RouteNames.signUp:
         return MaterialPageRoute(
           builder: (_) => const SignUpScreen(),
           settings: settings,
         );
-      
+
       case RouteNames.verify:
         return MaterialPageRoute(
           builder: (_) => const VerifyScreen(),
@@ -47,18 +49,25 @@ abstract final class AppRoutes {
           builder: (_) => const ForgotPasswordScreen(),
           settings: settings,
         );
-        case RouteNames.setNewPassword:
+
+      case RouteNames.setNewPassword:
         return MaterialPageRoute(
           builder: (_) => const SetNewPasswordScreen(),
           settings: settings,
         );
-      
-        case RouteNames.selectcategory:
+
+      case RouteNames.selectcategory:
         return MaterialPageRoute(
           builder: (_) => const SelectCategoryScreen(),
           settings: settings,
         );
-      
+
+      // <--- أضف حالة الـ mainLayout هنا
+      case RouteNames.mainLayout:
+        return MaterialPageRoute(
+          builder: (_) => const MainLayoutScreen(),
+          settings: settings,
+        );
 
       case RouteNames.activity:
         return _placeholderRoute(settings, 'Activity');

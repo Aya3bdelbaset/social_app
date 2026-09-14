@@ -4,6 +4,7 @@ import 'package:floating_bottom_bar/animated_bottom_navigation_bar.dart'
 import 'package:social_app/core/constants/app_sizes.dart';
 import 'package:social_app/core/constants/app_strings.dart';
 import 'package:social_app/core/theme/app_colors.dart';
+
 class AppBottomNavigationBar extends StatelessWidget {
   const AppBottomNavigationBar({
     super.key,
@@ -14,128 +15,151 @@ class AppBottomNavigationBar extends StatelessWidget {
   final int currentIndex;
   final ValueChanged<int> onIndexChanged;
 
-  @override
-  Widget build(BuildContext context) {
-    return AnimatedBottomNavigationBar(
-      barColor: AppColors.white,
-
-      controller: FloatingBottomBarController(
-        initialIndex: currentIndex,
-      ),
-
-      bottomBar: [
-        // Home
-        BottomBarItem(
-          icon: const Icon(
-            Icons.home_outlined,
-            size: AppSizes.iconLarge,
-            color: AppColors.textSecondary,
-          ),
-          iconSelected: const Icon(
-            Icons.home,
-            size: AppSizes.iconLarge,
-            color: AppColors.primary,
-          ),
-          title: AppStrings.home,
-          dotColor: AppColors.primary,
-          onTap: (value) {
-            onIndexChanged(value);
-          },
+  Widget _buildNavItem({
+    required IconData iconData,
+    required String label,
+    required Color color,
+  }) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        Icon(
+          iconData,
+          size: AppSizes.iconLarge,
+          color: color,
         ),
-
-        // Discover
-        BottomBarItem(
-          icon: const Icon(
-            Icons.grid_view_outlined,
-            size: AppSizes.iconLarge,
-            color: AppColors.textSecondary,
+        const SizedBox(height: 2),
+        Text(
+          label,
+          style: TextStyle(
+            fontSize: 11,
+            fontWeight: FontWeight.w500,
+            color: color,
           ),
-          iconSelected: const Icon(
-            Icons.grid_view_rounded,
-            size: AppSizes.iconLarge,
-            color: AppColors.primary,
-          ),
-          title: AppStrings.discover,
-          dotColor: AppColors.primary,
-          onTap: (value) {
-            onIndexChanged(value);
-          },
-        ),
-
-        // Activity
-        BottomBarItem(
-          icon: const Icon(
-            Icons.notifications_none_outlined,
-            size: AppSizes.iconLarge,
-            color: AppColors.textSecondary,
-          ),
-          iconSelected: const Icon(
-            Icons.notifications,
-            size: AppSizes.iconLarge,
-            color: AppColors.primary,
-          ),
-          title: AppStrings.activity,
-          dotColor: AppColors.primary,
-          onTap: (value) {
-            onIndexChanged(value);
-          },
-        ),
-
-        // Profile
-        BottomBarItem(
-          icon: const Icon(
-            Icons.person_outline,
-            size: AppSizes.iconLarge,
-            color: AppColors.textSecondary,
-          ),
-          iconSelected: const Icon(
-            Icons.person,
-            size: AppSizes.iconLarge,
-            color: AppColors.primary,
-          ),
-          title: AppStrings.profile,
-          dotColor: AppColors.primary,
-          onTap: (value) {
-            onIndexChanged(value);
-          },
         ),
       ],
+    );
+  }
 
-      // Center +
-      bottomBarCenterModel: BottomBarCenterModel(
-        centerBackgroundColor: AppColors.primary,
-
-        // Main +
-        centerIcon: const FloatingCenterButton(
-          child: Icon(
-            Icons.add,
-            color: AppColors.white,
-            size: AppSizes.iconLarge,
-          ),
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      color: AppColors.white, // ملء أي فراغ مقتطع
+      child: AnimatedBottomNavigationBar(
+        barColor: AppColors.white,
+        controller: FloatingBottomBarController(
+          initialIndex: currentIndex,
         ),
-
-        // Actions that appear after pressing +
-        centerIconChild: [
-          FloatingCenterButtonChild(
-            child: const Icon(
-              Icons.add_photo_alternate_outlined,
-              color: AppColors.white,
+        bottomBar: [
+          // Home
+          BottomBarItem(
+            title: '',
+            icon: _buildNavItem(
+              iconData: Icons.home_outlined,
+              label: AppStrings.home,
+              color: AppColors.textSecondary,
             ),
-            onTap: () {
-              debugPrint('Create post');
+            iconSelected: _buildNavItem(
+              iconData: Icons.home,
+              label: AppStrings.home,
+              color: AppColors.primary,
+            ),
+            dotColor: Colors.transparent,
+            onTap: (value) {
+              onIndexChanged(value);
             },
           ),
 
-          FloatingCenterButtonChild(
-            child: const Icon(
-              Icons.emoji_events_outlined,
-              color: AppColors.white,
+          // Discover
+          BottomBarItem(
+            title: '',
+            icon: _buildNavItem(
+              iconData: Icons.grid_view_outlined,
+              label: AppStrings.discover,
+              color: AppColors.textSecondary,
             ),
-            onTap: () {
-              debugPrint('Create challenge');
+            iconSelected: _buildNavItem(
+              iconData: Icons.grid_view_rounded,
+              label: AppStrings.discover,
+              color: AppColors.primary,
+            ),
+            dotColor: Colors.transparent,
+            onTap: (value) {
+              onIndexChanged(value);
+            },
+          ),
+
+          // Activity
+          BottomBarItem(
+            title: '',
+            icon: _buildNavItem(
+              iconData: Icons.notifications_none_outlined,
+              label: AppStrings.activity,
+              color: AppColors.textSecondary,
+            ),
+            iconSelected: _buildNavItem(
+              iconData: Icons.notifications,
+              label: AppStrings.activity,
+              color: AppColors.primary,
+            ),
+            dotColor: Colors.transparent,
+            onTap: (value) {
+              onIndexChanged(value);
+            },
+          ),
+
+          // Profile
+          BottomBarItem(
+            title: '',
+            icon: _buildNavItem(
+              iconData: Icons.person_outline,
+              label: AppStrings.profile,
+              color: AppColors.textSecondary,
+            ),
+            iconSelected: _buildNavItem(
+              iconData: Icons.person,
+              label: AppStrings.profile,
+              color: AppColors.primary,
+            ),
+            dotColor: Colors.transparent,
+            onTap: (value) {
+              onIndexChanged(value);
             },
           ),
         ],
+
+        // Center +
+        bottomBarCenterModel: BottomBarCenterModel(
+          centerBackgroundColor: AppColors.primary,
+          centerIcon: const FloatingCenterButton(
+            child: Icon(
+              Icons.add,
+              color: AppColors.white,
+              size: AppSizes.iconLarge,
+            ),
+          ),
+          centerIconChild: [
+            FloatingCenterButtonChild(
+              child: const Icon(
+                Icons.add_photo_alternate_outlined,
+                color: AppColors.white,
+              ),
+              onTap: () {
+                debugPrint('Create post');
+              },
+            ),
+            FloatingCenterButtonChild(
+              child: const Icon(
+                Icons.emoji_events_outlined,
+                color: AppColors.white,
+              ),
+              onTap: () {
+                debugPrint('Create challenge');
+              },
+            ),
+          ],
+        ),
       ),
     );
   }

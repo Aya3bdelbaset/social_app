@@ -39,12 +39,13 @@ class _SelectCategoryScreenState extends State<SelectCategoryScreen> {
     });
   }
 
+  // هنا التعديل
   void _onExplorePressed() {
     if (_selectedCategory == null) return;
 
     Navigator.pushReplacementNamed(
       context,
-      RouteNames.home,
+      RouteNames.mainLayout, // غيرناها هنا من home إلى mainLayout
     );
   }
 
@@ -67,7 +68,6 @@ class _SelectCategoryScreenState extends State<SelectCategoryScreen> {
                     AppAssets.iclick,
                     fit: BoxFit.cover,
                   ),
-      
                   const Align(
                     alignment: Alignment.topCenter,
                     child: Padding(
@@ -90,18 +90,11 @@ class _SelectCategoryScreenState extends State<SelectCategoryScreen> {
             child: SingleChildScrollView(
               physics: const BouncingScrollPhysics(),
               child: Padding(
-                padding: const EdgeInsets.fromLTRB(
-                  16,
-                  20,
-                  16,
-                  12,
-                ),
-                
+                padding: const EdgeInsets.fromLTRB(16, 20, 16, 12),
                 child: Column(
                   children: [
-                    SizedBox(height: 20),
+                    const SizedBox(height: 20),
                     const Text(
-                      
                       'Who are you?',
                       textAlign: TextAlign.center,
                       style: TextStyle(
@@ -110,7 +103,6 @@ class _SelectCategoryScreenState extends State<SelectCategoryScreen> {
                         color: Color.fromARGB(255, 5, 5, 5),
                       ),
                     ),
-  
                     GridView.builder(
                       shrinkWrap: true,
                       physics: const NeverScrollableScrollPhysics(),
@@ -124,7 +116,7 @@ class _SelectCategoryScreenState extends State<SelectCategoryScreen> {
                       ),
                       itemBuilder: (context, index) {
                         final category = _categories[index];
-      
+
                         return CategoryCard(
                           title: category.title,
                           image: category.image,
@@ -133,7 +125,6 @@ class _SelectCategoryScreenState extends State<SelectCategoryScreen> {
                         );
                       },
                     ),
-      
                     const SizedBox(height: 20),
                     const Text(
                       'SHARE - INSPIRE - CONNECT',
@@ -145,7 +136,6 @@ class _SelectCategoryScreenState extends State<SelectCategoryScreen> {
                         color: Color(0xFF5151C6),
                       ),
                     ),
-      
                     const SizedBox(height: 20),
                     SizedBox(
                       width: 215,
@@ -186,7 +176,6 @@ class _SelectCategoryScreenState extends State<SelectCategoryScreen> {
                         ),
                       ),
                     ),
-      
                     const SizedBox(height: 8),
                   ],
                 ),
@@ -224,6 +213,3 @@ class _HeaderClipper extends CustomClipper<Path> {
     return false;
   }
 }
-
-
-
