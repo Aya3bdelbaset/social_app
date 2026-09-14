@@ -28,7 +28,7 @@ class SearchBarSection extends StatelessWidget {
                       color: Colors.grey.shade100,
                       borderRadius: BorderRadius.circular(24),
                       border: Border.all(
-                        color: AppColors.primary, // استروك أزرق ثابت وواضح
+                        color: AppColors.primary,
                         width: 1.5,
                       ),
                     ),
@@ -42,9 +42,8 @@ class SearchBarSection extends StatelessWidget {
                             autofocus: true,
                             decoration: InputDecoration(
                               hintText: 'Type something',
-                              // 👇 هنا المكان اللي بتغير منه لون وكلاس الـ Hint Text
                               hintStyle: TextStyle(
-                                color: Colors.grey, // تقدر تغير اللون من هنا بسهولة
+                                color: Colors.grey,
                                 fontSize: 15,
                               ),
                               border: InputBorder.none,
@@ -57,6 +56,7 @@ class SearchBarSection extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(width: 12),
+                
                 GestureDetector(
                   onTap: onCancel,
                   child: Text(
