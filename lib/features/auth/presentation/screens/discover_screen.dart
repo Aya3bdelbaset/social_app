@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:social_app/core/constants/app_sizes.dart';
 import 'package:social_app/core/theme/app_colors.dart';
+import 'package:social_app/features/auth/presentation/screens/challenge_screen.dart'; // 👈 1. استيراد شاشة التحدي
 import 'package:social_app/features/auth/presentation/screens/search_screen.dart';
+import 'package:social_app/features/auth/presentation/widgets/challenge_section_discover.dart'; // 👈 2. استيراد ويدجت السيكشن
 import 'package:social_app/features/auth/presentation/widgets/collection_section_discover.dart';
 import 'package:social_app/features/auth/presentation/widgets/search_bar_home.dart';
 import 'package:social_app/features/auth/presentation/widgets/topic_section_dicover.dart';
@@ -37,16 +39,30 @@ class DiscoverScreen extends StatelessWidget {
                   vertical: AppSizes.sm,
                 ),
                 child: Column(
-                  children: const [
-                    TopicSectionDiscover(),
+                  children: [
+                    const TopicSectionDiscover(),
 
-                    SizedBox(height: AppSizes.xl),
 
-                    CollectionSectionDiscover(),
+                    const SizedBox(height: AppSizes.xl),
 
-                    SizedBox(height: AppSizes.xl),
+                    const CollectionSectionDiscover(),
 
-                    CollectionSectionDiscover(),
+                    const SizedBox(height: AppSizes.xl),
+
+                    const CollectionSectionDiscover(),
+
+                    const SizedBox(height: AppSizes.xl),
+
+                    ChallengeSectionDiscover(
+                      onTap: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => const ChallengeScreen(),
+                          ),
+                        );
+                      },
+                    ),
                   ],
                 ),
               ),
