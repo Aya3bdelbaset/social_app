@@ -43,11 +43,10 @@ class PostCard extends StatelessWidget {
                   ),
                 ),
                 const Spacer(),
-                // تكبير وتوضيح خط الوقت
                 Text(
                   post.timeAgo,
                   style: AppTextStyles.bodyMedium.copyWith(
-                    fontSize: 14, // حطينا مقاس الخط هنا بشكل واضح
+                    fontSize: 14, 
                     color: AppColors.textSecondary.withOpacity(0.8),
                   ),
                 ),
@@ -82,7 +81,6 @@ class PostCard extends StatelessWidget {
                 ),
                 const Spacer(),
 
-                // Comments: الرقم أولاً ثم الأيقونة على اليمين
                 Text(
                   '${post.commentsCount}',
                   style: AppTextStyles.bodyMedium.copyWith(
@@ -98,7 +96,6 @@ class PostCard extends StatelessWidget {
 
                 const SizedBox(width: 16),
 
-                // Likes: الرقم أولاً ثم الأيقونة على اليمين
                 Text(
                   '${post.likesCount}',
                   style: AppTextStyles.bodyMedium.copyWith(
