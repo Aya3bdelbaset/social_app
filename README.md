@@ -60,6 +60,6 @@ A social media application for creative people to share, inspire, and connect.
   <tr>
     <td><img src="assets/images/screenshots/search1.png" width="200"></td>
     <td><img src="assets/images/screenshots/search2.png" width="200"></td>
-    <td><img src="assets/images/screenshots/challenge_screen.png" width="200"></td>
+    <td><img src="assets/images/screenshots/challenge1.png" width="200"></td>
+    <td><img src="assets/images/screenshots/challenge2.png" width="200"></td>
   </tr>
-</table><img width="447" height="980" alt="home_screen" src="https://github.com/user-attachments/assets/05016d1b-43fe-4a63-9d04-82757de2b412" />
